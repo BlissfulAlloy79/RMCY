@@ -5,7 +5,7 @@ pi = []
 
 def op_addition(target_list):
     tmp_l = target_list.copy()
-    tl_sum = tl_sum = target_list[1] + target_list[2] + target_list[3] + target_list[4]
+    tl_sum = target_list[1] + target_list[2] + target_list[3] + target_list[4]
 
     if tl_sum == 24:
         shoot_id_list.append(tmp_l[1])
@@ -107,7 +107,7 @@ def op_subtraction(target_list):
     if list_24 != 24:
         i = 4
         tmp_l = target_list.copy()
-        while list_24 != 24 and i != 9:
+        while list_24 != 24 and i != 10:
             j = i - 4
             if i in tmp_l and j in tmp_l:
                 pi.append(tmp_l.index(i))
@@ -192,9 +192,58 @@ def op_division(target_list):
                 break
 
 
+def op_multiplication(target_list):
+    tmp_l = target_list.copy()
+    if 4 in tmp_l and 6 in tmp_l:
+        shoot_id_list.append(4)
+        shoot_id_list.append('x')
+        shoot_id_list.append(6)
+    elif 3 in tmp_l and 8 in tmp_l:
+        shoot_id_list.append(3)
+        shoot_id_list.append('x')
+        shoot_id_list.append(6)
+    elif 2 in tmp_l:
+        shoot_id_list.append(2)
+        tmp_l.remove(2)
+        if 1 in tmp_l:
+            tmp_l.remove(1)
+            if 2 in tmp_l:
+                shoot_id_list.append('x')
+                shoot_id_list.append(1)
+                shoot_id_list.append(2)
+            if 4 in tmp_l:
+                shoot_id_list.append(4)
+                shoot_id_list.append('x')
+                shoot_id_list.append(1)
+        elif 3 in tmp_l and 4 in tmp_l:
+            shoot_id_list.append('x')
+            shoot_id_list.append(3)
+            shoot_id_list.append('x')
+            shoot_id_list.append(4)
+        elif 2 in tmp_l and 6 in tmp_l:
+            shoot_id_list.append('x')
+            shoot_id_list.append(2)
+            shoot_id_list.append('x')
+            shoot_id_list.append(6)
+        elif 2 in tmp_l:
+            shoot_id_list.append('x')
+            shoot_id_list.append(2)
+            tmp_l.remove(2)
+            if 2 in tmp_l and 3 in tmp_l:
+                shoot_id_list.append('x')
+                shoot_id_list.append(2)
+                shoot_id_list.append('x')
+                shoot_id_list.append(3)
+
+
+
+
+
 def main():
     a = ['-2748', '+1113', '-2473', '-9245', '+7269', '-1294', '-9245', '+7269', '-6096', '/4146', '/7023', '/7230', '/1205', '/6449', '/1289', '-4420', '-2748', '+7278', '-3195', '+1752', '-3978', '+2112', '-3595', '-6312', '-2495', '-3303', '-8754', '-6096', '-6844', '-9795']
-    for j in a:
+    na = ['x4293', 'x1228', 'x3892']
+    a1 = ['-6895']
+    for j in a1:
         t_list.clear()
         shoot_id_list.clear()
         pi.clear()
@@ -211,10 +260,11 @@ def main():
             op_subtraction(t_list)
         elif op == '/':
             op_division(t_list)
+        elif op == 'x':
+            op_multiplication(t_list)
 
         print(shoot_id_list)
         # print(pi)
-
 
 
 if __name__ == "__main__":
