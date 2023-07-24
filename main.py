@@ -201,7 +201,7 @@ def op_multiplication(target_list):
     elif 3 in tmp_l and 8 in tmp_l:
         shoot_id_list.append(3)
         shoot_id_list.append('x')
-        shoot_id_list.append(6)
+        shoot_id_list.append(8)
     elif 2 in tmp_l:
         shoot_id_list.append(2)
         tmp_l.remove(2)
