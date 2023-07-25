@@ -1,23 +1,9 @@
-def grip_top():
-    servo_ctrl.set_angle(3, 15, wait_for_complete=False)
-    servo_ctrl.set_angle(2, -90, wait_for_complete=True)
-    time.sleep(0.5)
-
-
 def grip_bot():
     servo_ctrl.set_angle(2, 10, wait_for_complete=False)
     servo_ctrl.set_angle(1, -85, wait_for_complete=True)
     servo_ctrl.set_angle(3, 20, wait_for_complete=True)
     servo_ctrl.set_angle(1, -45, wait_for_complete=False)
     servo_ctrl.set_angle(2, 45, wait_for_complete=True)
-
-
-def grip_pre_top():
-    servo_ctrl.set_angle(3, -60, wait_for_complete=True)
-    servo_ctrl.set_angle(2, -10, wait_for_complete=True)
-    time.sleep(0.2)
-    servo_ctrl.set_angle(1, -10, wait_for_complete=True)
-    time.sleep(0.5)
 
 
 def grip_pre_bot():
@@ -43,26 +29,13 @@ def grip_rest():
         time.sleep(0.5)
 
 
-def debug():
-    servo_ctrl.recenter(1, wait_for_complete=True)
-    servo_ctrl.recenter(2, wait_for_complete=True)
-    servo_ctrl.recenter(3, wait_for_complete=True)
-    servo_ctrl.set_angle(3, -90, wait_for_complete=True)
-    time.sleep(1)
-
-
 def start():
-    # debug()
-
     grip_rest()
 
-    grip_pre_top()
-    grip_top()
-    # grip_pre_bot()
-    # grip_bot()
+    grip_pre_bot()
+    time.sleep(3)
 
+    grip_bot()
     grip_drop()
 
     grip_rest()
-
-
