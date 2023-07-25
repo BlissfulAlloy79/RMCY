@@ -4,25 +4,11 @@ def grip_top():
     time.sleep(0.5)
 
 
-def grip_bot():
-    servo_ctrl.set_angle(1, -85, wait_for_complete=True)
-    servo_ctrl.set_angle(3, 20, wait_for_complete=True)
-    servo_ctrl.set_angle(1, -45, wait_for_complete=False)
-    servo_ctrl.set_angle(2, 45, wait_for_complete=True)
-
-
 def grip_pre_top():
     servo_ctrl.set_angle(3, -60, wait_for_complete=True)
     servo_ctrl.set_angle(2, -10, wait_for_complete=True)
     time.sleep(0.2)
     servo_ctrl.set_angle(1, -10, wait_for_complete=True)
-    time.sleep(0.5)
-
-
-def grip_pre_bot():
-    servo_ctrl.set_angle(3, -60, wait_for_complete=True)
-    servo_ctrl.set_angle(2, 30, wait_for_complete=True)
-    servo_ctrl.set_angle(1, -45, wait_for_complete=True)
     time.sleep(0.5)
 
 
@@ -50,18 +36,52 @@ def debug():
     time.sleep(1)
 
 
-def start():
-    # debug()
-
+def get_top():
     grip_rest()
 
     grip_pre_top()
     grip_top()
-    # grip_pre_bot()
-    # grip_bot()
 
     grip_drop()
 
     grip_rest()
 
 
+def move_to_ammo():
+    chassis_ctrl.set_trans_speed(1.7)
+    chassis_ctrl.move_with_distance(0, 1)
+
+    chassis_ctrl.set_trans_speed(0.2)
+    chassis_ctrl.move_with_time(180, 0.3)
+
+    chassis_ctrl.set_trans_speed(1.7)
+    chassis_ctrl.move_with_distance(-75, 1.4)
+    chassis_ctrl.move_with_distance(0, 1)
+    chassis_ctrl.move_with_distance(-85, 1.5)
+
+    chassis_ctrl.set_trans_speed(0.3)
+    chassis_ctrl.move_with_distance(0, 0.9)
+    chassis_ctrl.move_with_distance(-90, 0.3)
+
+    chassis_ctrl.set_trans_speed(0.3)
+    chassis_ctrl.move_with_time(0, 1)
+    chassis_ctrl.move_with_time(-90, 1)
+    chassis_ctrl.move_with_time(0, 1)
+
+
+def start():
+    # debug()
+    grip_rest()
+
+    move_to_ammo()
+    get_top()
+
+    chassis_ctrl.set_trans_speed(0.3)
+    chassis_ctrl.move_with_distance(70, 0.35)
+
+    get_top()
+
+    chassis_ctrl.set_trans_speed(0.3)
+    chassis_ctrl.move_with_distance(70, 0.35)
+
+    get_top()

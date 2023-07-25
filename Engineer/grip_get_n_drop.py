@@ -1,5 +1,5 @@
 def grip_top():
-    servo_ctrl.set_angle(3, 20, wait_for_complete=False)
+    servo_ctrl.set_angle(3, 15, wait_for_complete=False)
     servo_ctrl.set_angle(2, -90, wait_for_complete=True)
     time.sleep(0.5)
 
