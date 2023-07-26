@@ -29,16 +29,9 @@ def grip_rest():
 
 
 def start():
-    chassis_ctrl.enable_stick_overlay()
-    gimbal_ctrl.enable_stick_overlay()
     grip_rest()
 
     grip_pre_top()
-    tools.timer_ctrl(rm_define.timer_start)
-    while True:
-        if tools.timer_current() >= 3:
-            tools.timer_ctrl(rm_define.timer_stop)
-            break
 
     grip_top()
     grip_drop()
