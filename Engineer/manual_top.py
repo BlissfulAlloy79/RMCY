@@ -32,7 +32,11 @@ def start():
     grip_rest()
 
     grip_pre_top()
-    time.sleep(3)
+    tools.timer_ctrl(rm_define.timer_start)
+    while True:
+        if tools.timer_current() >= 3:
+            tools.timer_ctrl(rm_define.timer_stop)
+            break
 
     grip_top()
     grip_drop()
