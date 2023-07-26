@@ -29,6 +29,7 @@ def grip_rest():
 
 
 def start():
+    chassis_ctrl.enable_stick_overlay()
     grip_rest()
 
     grip_pre_top()
