@@ -1,14 +1,14 @@
 def grip_bot():
-    servo_ctrl.set_angle(2, 10, wait_for_complete=False)
-    servo_ctrl.set_angle(1, -85, wait_for_complete=True)
-    servo_ctrl.set_angle(3, 20, wait_for_complete=True)
+    servo_ctrl.set_angle(2, 0, wait_for_complete=False)
+    servo_ctrl.set_angle(1, -90, wait_for_complete=True)
+    servo_ctrl.set_angle(3, 15, wait_for_complete=True)
     servo_ctrl.set_angle(1, -45, wait_for_complete=False)
     servo_ctrl.set_angle(2, 45, wait_for_complete=True)
 
 
 def grip_pre_bot():
     servo_ctrl.set_angle(3, -60, wait_for_complete=True)
-    servo_ctrl.set_angle(2, 45, wait_for_complete=True)
+    servo_ctrl.set_angle(2, 35, wait_for_complete=True)
     servo_ctrl.set_angle(1, -45, wait_for_complete=True)
     time.sleep(0.5)
 
@@ -31,6 +31,7 @@ def grip_rest():
 
 def start():
     chassis_ctrl.enable_stick_overlay()
+    gimbal_ctrl.enable_stick_overlay()
     grip_rest()
 
     grip_pre_bot()
